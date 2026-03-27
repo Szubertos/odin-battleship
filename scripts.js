@@ -27,7 +27,31 @@ class Gameboard {
 
     placeShip(length, start, direction) {
         let ship = new Ship(length);
-        return ship;
+        let coordinates = [];
+        if (length>10) {
+            throw new Error ('Ship reaches outside the board.');
+        }
+        //check if the ship fits
+        if (direction == 'horizontal') {
+            if ((start[0] + length) > this.boardSize) {
+                throw new Error ('Ship reaches outside the board.');
+            }
+        } else {
+            if ((start[1] + length) > this.boardSize) {
+                throw new Error ('Ship reaches outside the board.');
+            }
+        }
+
+        for (let i=0; i<length; i++) {
+            if (direction == 'horizontal') {
+                let coodinate = [start[0]+i, start[1]];
+                coordinates[i] = coodinate;
+            } else {
+                let coodinate = [start[0], start[1]+i];
+                coordinates[i] = coodinate;
+            }
+        }
+        return {Ship: ship, Coordinates: coordinates};
     }
 
     four(){
