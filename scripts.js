@@ -25,8 +25,19 @@ class Gameboard {
         this.boardSize = boardSize;
     }
 
-    placeShip(length, start, end) {
+    placeShip(length, start, direction) {
         let ship = new Ship(length);
+        return ship;
+    }
+
+    four(){
+        return 4;
     }
 
 }
+
+const three = function(){
+    return 3;
+};
+
+module.exports = Gameboard;
