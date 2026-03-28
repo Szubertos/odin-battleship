@@ -11,6 +11,7 @@ class Ship {
 
     isSunk() {
         if (this.hits >= this.length) {
+            this.sunk = true;
             return true;
         } else {
             return false;
@@ -25,6 +26,7 @@ class Gameboard {
         this.boardSize = boardSize;
         this.ships = [];
         this.blockedTiles = [];
+        this.missedShots = [];
     }
 
     placeShip(length, start, direction) {
@@ -35,14 +37,11 @@ class Gameboard {
             throw new Error ('Ship reaches outside the board.');
         }
         //check if the ship fits
-        console.log(direction);
-        console.log(direction == 'horizontal');
         if (direction == 'horizontal') {
             if ((start[0] + length) > this.boardSize) {
                 throw new Error ('Ship reaches outside the board.');
             }
         } else {
-            console.log(direction);
             if ((start[1] + length) > this.boardSize) {
                 throw new Error ('Ship reaches outside the board.');
             }
@@ -71,17 +70,29 @@ class Gameboard {
         for (let i=0; i<coordinates.length; i++) {
             this.blockedTiles.push(coordinates[i]);
         }
-        console.log(this.blockedTiles);
 
         let shipSaved = {Ship: ship, Coordinates: coordinates};
         this.ships.push(shipSaved);
-        console.log(this.ships);
         return shipSaved;
     }
 
     returnAllShips() {
-        console.log(this.ships);
         return this.ships;
+    }
+
+    receiveAttack(attackCoordinate) {
+        for (let i=0; i<this.ships.length; i++) {
+            let allCoords = this.ships[i].Coordinates;
+            for (let j=0; j<allCoords.length; j++) {
+                console.log(attackCoordinate[0], attackCoordinate[1]);
+                console.log(allCoords[j][0], allCoords[j][1]);
+                if (allCoords[j][0] == attackCoordinate[0] && allCoords[j][1] == attackCoordinate[1]){
+                    return true;
+                };
+            }
+        }
+        this.missedShots.push(attackCoordinate);
+        return false;
     }
 
 }

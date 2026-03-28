@@ -41,3 +41,14 @@ test('return all ships except last two, check for ship intersection', () => {
     GB2.placeShip(3, [3, 2], 'vertical');
     expect(GB2.returnAllShips()).toEqual([{"Coordinates": [[0, 8], [1, 8]], "Ship": {"hits": 0, "length": 2, "sunk": false}}, {"Coordinates": [[3, 3], [4, 3]], "Ship": {"hits": 0, "length": 2, "sunk": false}}, {"Coordinates": [[2, 6], [2, 7], [2, 8]], "Ship": {"hits": 0, "length": 3, "sunk": false}}, {"Coordinates": [[5, 8], [5, 9]], "Ship": {"hits": 0, "length": 2, "sunk": false}}]);
 });
+
+test('attackShip', () => {
+    let GB3 = new Gameboard(10);
+    GB3.placeShip(5, [0,0], 'horizontal');
+    expect(GB3.receiveAttack([1, 0])).toEqual(true);
+    expect(GB3.receiveAttack([6, 6])).toEqual(false);
+    expect(GB3.receiveAttack([7, 6])).toEqual(false);
+    expect(GB3.receiveAttack([8, 6])).toEqual(false);
+    expect(GB3.receiveAttack([9, 6])).toEqual(false);
+    expect(GB3.missedShots).toEqual([6, 6], [7, 6], [8, 6], [9, 6]);
+});
