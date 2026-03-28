@@ -59,8 +59,9 @@ class Gameboard {
         return shipSaved;
     }
 
-    four(){
-        return 4;
+    returnAllShips() {
+        console.log(this.ships);
+        return this.ships;
     }
 
 }
