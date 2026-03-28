@@ -92,6 +92,7 @@ class Gameboard {
             }
         }
         this.missedShots.push(attackCoordinate);
+        console.log(this.missedShots);
         return false;
     }
 

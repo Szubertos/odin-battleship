@@ -50,5 +50,6 @@ test('attackShip', () => {
     expect(GB3.receiveAttack([7, 6])).toEqual(false);
     expect(GB3.receiveAttack([8, 6])).toEqual(false);
     expect(GB3.receiveAttack([9, 6])).toEqual(false);
-    expect(GB3.missedShots).toEqual([6, 6], [7, 6], [8, 6], [9, 6]);
+    console.log(GB3.missedShots);
+    expect(GB3.missedShots).toEqual([[6, 6], [7, 6], [8, 6], [9, 6]]);
 });
