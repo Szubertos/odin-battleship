@@ -23,6 +23,7 @@ class Gameboard {
         this.shipsAndCoordinates = [];
         this.hits = [];
         this.boardSize = boardSize;
+        this.ships = [];
     }
 
     placeShip(length, start, direction) {
@@ -51,7 +52,11 @@ class Gameboard {
                 coordinates[i] = coodinate;
             }
         }
-        return {Ship: ship, Coordinates: coordinates};
+
+        let shipSaved = {Ship: ship, Coordinates: coordinates};
+        this.ships.push(shipSaved);
+        console.log(this.ships);
+        return shipSaved;
     }
 
     four(){
