@@ -108,4 +108,10 @@ class Gameboard {
 
 }
 
+class Player {
+    constructor(playerType){
+        this.gameboard = new Gameboard;
+        this.type = playerType;
+    }
+}
 module.exports = Gameboard;
