@@ -1,0 +1,17 @@
+#background {
+    background-color: grey;
+}
+
+.gameboard {
+    display: grid;
+    border: 10px solid blue;
+    height: 500px;
+    width: 500px;
+}
+.cell {
+    border: 5px red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

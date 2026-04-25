@@ -1,4 +1,6 @@
-const Gameboard = require('./scripts.js');
+const Gameboard = require('./classes.js');
+const Ship = require('./classes.js');
+const Player = require('./classes.js');
 
 let GB = new Gameboard(10);
 
